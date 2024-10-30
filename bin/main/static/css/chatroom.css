@@ -1,0 +1,327 @@
+@charset "UTF-8";
+	* {
+		font-family: 'NanumGothic', 'serif';
+	}
+	
+	body {
+	    margin: 0; /* 기본 여백 제거 */
+	    overflow: hidden; /* 기본 스크롤바 숨기기 */
+	}
+	
+	.container {
+	    display: flex; /* Flexbox 사용 */
+	    height: 100vh; /* 전체 높이 사용 */
+	    overflow: hidden; /* 기본 스크롤바 숨기기 */
+	}
+	
+	.chaticon {
+		margin-left: 5px;
+		margin-top: 2px;
+	}
+	
+	/* .chatroom의 스타일 설정 */
+	.chatroom {
+	    width: 304px;
+	    height: 100%; /* 전체 높이 사용 */
+	    border-right: 1px solid #D5D5D5;
+	    display: flex;
+	    flex-direction: column;
+	}
+	
+	.makeroom {
+	    margin: 10px;
+	    
+	}
+	
+	.btn-open {
+		margin: 1px;
+		background: #9DCFFF;
+		border-radius: 10px;
+		width: 280px;
+		height: 55px;
+		font-size: 15px;
+		border: none;
+		cursor:pointer;
+	}
+	
+	.btn-open:hover {
+		background: #80C2FF;
+	}
+	
+	.searchroom {
+	    margin: 8px;
+	}
+	
+	.btn_roomsearch {
+		background-image: url('../upload/search.png');
+		background-position:  0px 0px;
+    	background-repeat: no-repeat;
+		width: 20px;
+   		height: 20px;
+    	border: 0px;
+ 	    cursor:pointer;
+        outline: 0;		
+	}
+	
+	.right-panel {
+	    /* display: flex; */
+	    flex-direction: column; /* 수직으로 배치 */
+	    flex-grow: 1; /* 나머지 공간을 차지하도록 설정 */
+	    height: 100%; /* 전체 높이 사용 */
+	    box-sizing: border-box; /* padding, border 포함 */
+	}
+	
+	.chat_info {
+	    width: 100%; /* 전체 너비 사용 */
+	    height: 60px; /* 높이를 줄이기 (예시로 60px 사용) */
+	    padding: 16px; /* 내부 여백 추가 */
+	    border-bottom: 1px solid #D5D5D5;
+	    display: flex; /* Flexbox 사용 */
+	    align-items: center; /* 수직 가운데 정렬 */
+	    box-sizing: border-box; /* padding, border 포함 */
+	}
+	
+	#chatName {
+		margin-left: 10px;
+	}
+	
+	#chat_view {
+	    width: 100%; /* 전체 너비 사용 */
+	    flex-grow: 1; /* 남은 공간을 차지하도록 설정 */
+	    height: 585px;
+	    padding: 16px; /* 내부 여백 추가 */
+	    overflow-y: auto; /* 내용이 길어질 경우 스크롤 추가 */
+	    box-sizing: border-box; /* padding 및 border 포함 */
+	}
+	
+	.message_input {
+	    display: flex; /* Flexbox 사용 */
+	    flex-direction: column; /* 세로 방향으로 배치 */
+	    width: 100%;
+	    height: 25%; /* 적절한 높이 설정 (브라우저 크기에 따라 조정 가능) */
+	    padding: 16px; /* 내부 여백 */
+	    border-top: 1px solid #D5D5D5; /* 상단 테두리 */
+	    box-sizing: border-box; /* padding 및 border 포함 */
+	}
+
+	.chat_input {
+	    flex-grow: 1; /* 남은 공간을 차지하도록 설정 */
+	    font-size: 15px;
+	    border: 0;
+	    border-radius: 15px;
+	    outline: none;
+	    padding: 10px; /* 내부 여백 */
+	    background-color: rgb(233, 233, 233);
+	    resize: none; /* 크기 조정 비활성화 */
+	    box-sizing: border-box; /* padding 및 border 포함 */
+	}
+	
+	nav {
+	    border-bottom: 1px solid #D5D5D5;
+	    display: flex;
+	    align-items: center; /* 수직 가운데 정렬 */
+	    justify-content: flex-start; /* 수평 왼쪽 정렬 */
+	    padding: 8px; /* 여백 추가 (선택사항) */
+	}
+	
+	nav img {
+	    margin-right: 8px; /* 이미지와 텍스트 사이의 간격 조정 (선택사항) */
+	    margin-bottom: 5px;
+	}
+	
+	nav p {
+	    margin: 0; /* p 태그의 기본 여백 제거 */
+	    font-size: 18px; /* 텍스트 크기 조정 (선택사항) */
+	    margin-bottom: 5px;
+	}
+	
+	.search_input {
+	    width: 270px;
+	    height: 32px;
+	    font-size: 15px;
+	    border: 0;
+	    border-radius: 15px;
+	    outline: none;
+	    padding-left: 10px;
+	    background-color: rgb(233, 233, 233);
+	}
+	
+	.roomlist {
+	    overflow: auto;
+	    overflow-x: hidden; /* 스크롤 */
+	    padding: 0; /* 패딩 제거 */
+	    margin: 0; /* 마진 제거 */
+	    flex: 1; /* 가용 공간을 채우도록 설정 */
+	    display: flex;
+	    justify-content: center; /* 가운데 정렬 */
+	    align-items: flex-start; /* 상단 정렬 */
+	}
+	
+	/* 테이블의 스타일 설정 */
+	table {
+	    border-collapse: separate; /* 테이블 셀 간 간격을 설정 */
+	    border-spacing: 0; /* 셀 간 간격 제거 */
+	    width: 100%; /* 테이블이 부모 요소의 너비를 채우도록 설정 */
+	}
+	
+	/* td와 th의 스타일 설정 */
+	td, th {
+	    padding: 8px; /* 셀 여백 */
+	    text-align: left; /* 텍스트 정렬 */
+	}
+	
+	img {
+	    vertical-align: middle; /* 이미지 수직 정렬 */
+	}
+	
+	#roomname {
+	    padding: 8px; /* 셀 여백 */
+	    text-align: left; /* 텍스트 정렬 */
+	    min-width: 208px; /* 셀의 최소 너비 (원하는 값으로 조정) */
+	}
+	
+	/* tr 요소의 hover 스타일 설정 */
+	tr {
+	    transition: background-color 0.3s ease; /* 부드러운 색상 전환 효과 */
+	}
+	
+	/* tr 요소의 hover 시 스타일 설정 */
+	tr:hover {
+	    background-color: transparent; /* 투명 배경 */
+	}
+	
+	/* tr 요소의 자식 td에 hover 스타일 적용 */
+	tr:hover td {
+	    background-color: #f2f2f2; /* 연한 회색 */
+	    border-radius: 10px; /* 둥글게 */
+	}
+	
+	textarea {
+		resize: none;
+		line-height: 20px; 
+	}
+	
+	#btnWrap {
+	  	width: 500px;
+	  	margin: 100px auto;
+	}
+	#popupBtn {
+	  	width: 150px;
+	  	height: 50px;
+	  	padding: 10px 5px;
+	  	background-color: #007bff;
+	  	color: #fff; /* 텍스트 색상을 지정하세요 */
+	  	border: none; /* 테두리 제거 */
+	  	cursor: pointer;
+	}
+	#modalWrap {
+	  	position: fixed; /* 화면에 고정 */
+	  	z-index: 1; /* 상위에 위치 */
+	  	padding-top: 100px;
+	  	left: 0;
+	  	top: 0;
+	  	width: 100%;
+	  	height: 100%;
+	  	overflow: auto;
+	  	background-color: rgba(0, 0, 0, 0.4); /* 반투명한 배경색 */
+	  	display: none; /* 초기에는 숨김 */
+	}
+	
+	#modalBody {
+	  	width: 500px;
+	  	height: 300px;
+	  	padding: 30px 30px;
+	  	margin: 0 auto;
+	  	border: 1px solid #777;
+	  	background-color: #fff;
+	}
+	
+	#closeBtn {
+	 	float: right;
+	  	font-weight: bold;
+	  	color: #777;
+	  	font-size: 25px;
+	  	cursor: pointer;
+	}
+	
+	.modal-bg {
+		display:none;
+		width:100%;
+		height:100%;
+		position:fixed;
+		top:0;
+		left:0;
+		right:0;
+		background: rgba(0, 0, 0, 0.6);
+		z-index:999;
+	}
+	
+    .modal-wrap {
+    	display: flex; /* Flexbox 사용 */
+    	flex-direction: column; /* 수직 배치 */  
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+	    width: 600px;
+	    height: 200px;
+	    background: #fff;
+	    z-index: 1000;
+	    border-radius: 10px;
+	    padding-top: 1px;
+	    padding-bottom: 1px;
+	    padding-left: 17px;
+	    padding-right: 15px;
+	}
+    .modal-header {
+	    display: flex; /* Flexbox 사용 */
+	    justify-content: space-between; /* 양쪽 끝 정렬 */
+	    align-items: center; /* 수직 중앙 정렬 */
+	    margin-bottom: 1rem; /* 헤더와 메인 사이 여백 */
+	}
+    
+    .modal-close {
+    	margin-right: 3px;
+		width: 17px;
+   		height: 17px;
+ 	    cursor: pointer;
+        outline: 0;		
+    }
+    
+	.modal-main {
+	  	position: relative;
+	}
+	
+	.input_roomname {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.3s;
+      width: 500px;
+      height: 30px;
+    }
+    
+    .input_roomname:focus {
+      border-color: #9DCFFF;
+    }
+    
+    .btn_makeroom {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #9DCFFF;
+      color: black;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      height: 50px;
+    }
+
+    .btn_makeroom:hover {
+      background-color: #80C2FF;
+    }
+    
+    
+    
